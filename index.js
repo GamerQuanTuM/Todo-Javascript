@@ -39,9 +39,10 @@ function addTodos(e) {
     text.textContent = input;
 
     let editButton = document.createElement('button');
-    editButton.className = 'delete-btn'; // Rename the class to "edit-btn"
+    editButton.className = 'delete-btn'; 
     editButton.textContent = 'Edit';
     editButton.style.marginRight = '10px';
+    editButton.style.background = 'blue';
 
     let deleteButton = document.createElement('button');
     deleteButton.className = 'delete-btn';
