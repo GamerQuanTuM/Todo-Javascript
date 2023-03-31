@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/sv443-joke-api@0.0.8/web/index.js"></script>
     <script src="index.js" defer></script>
-    <title>Document</title>
+    <title>TodoList with Random Jokes</title>
   </head>
   <body>
     <div class="animated-bg"></div>
@@ -17,7 +18,26 @@
         <button type="submit" class="todo-btn">Add</button>
       </form>
       <ul class="todo-list"></ul>
-      <button class="todo-btn" id="remove-btn" style="background: #1f1313;width: 100%;">Remove</button>
+      <button
+        class="todo-btn"
+        id="remove-btn"
+        style="background: #1f1313; width: 100%"
+      >
+        Remove
+      </button>
+    </div>
+    <div class="todo-container" style="margin-top: 20px">
+      <h1>Get Random Jokes</h1>
+      <button
+        class="todo-btn"
+        id="random-btn"
+        style="background: teal; width: 100%"
+      >
+        Get Jokes
+      </button>
+      <div class="random-jokes-container">
+          <p class="random-jokes-text" style="color:black;">Click the button to get a joke</p>
+      </div>
     </div>
   </body>
 </html>

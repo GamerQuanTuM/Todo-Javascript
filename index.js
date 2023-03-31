@@ -1,9 +1,14 @@
 import './style.css';
 
+
 let addButton = document.querySelector('.todo-btn');
 let todoInput = document.querySelector('.todo-input');
 let todoList = document.querySelector('.todo-list'); //ul
 let removeAll = document.querySelector('#remove-btn');
+let randomJokesButton = document.querySelector('#random-btn');
+
+let randomJokesText = document.querySelector(".random-jokes-text");
+let randomJokesContainer = document.querySelector('.random-jokes-container');
 
 let currentlyEditing = null;
 
@@ -13,12 +18,12 @@ function addTodos(e) {
   if (input === '') {
     return;
   }
-  if (currentlyEditing) { 
+  if (currentlyEditing) {
     currentlyEditing.querySelector('.todo-text').textContent = input;
     todoInput.value = '';
     currentlyEditing = null;
-    addButton.textContent = 'Add'; 
-  } else { 
+    addButton.textContent = 'Add';
+  } else {
     let todoItem = document.createElement('li'); //li
     todoItem.className = 'todo-item';
     const checkbox = document.createElement('input');
@@ -39,7 +44,7 @@ function addTodos(e) {
     text.textContent = input;
 
     let editButton = document.createElement('button');
-    editButton.className = 'delete-btn'; 
+    editButton.className = 'delete-btn';
     editButton.textContent = 'Edit';
     editButton.style.marginRight = '10px';
     editButton.style.background = 'blue';
@@ -59,7 +64,7 @@ function addTodos(e) {
     }
     function editList() {
       todoInput.value = text.textContent;
-      currentlyEditing = todoItem; 
+      currentlyEditing = todoItem;
       addButton.textContent = 'Save';
     }
     deleteButton.addEventListener('click', removeList);
@@ -75,3 +80,20 @@ removeAll.addEventListener('click', function () {
 });
 
 addButton.addEventListener('click', addTodos);
+
+randomJokesContainer.style.width="100%"
+randomJokesText.style.width="100%"
+randomJokesText.style.textAlign="center"
+randomJokesText.style.fontSize="20px"
+
+
+
+const getJokes = async () => {
+  const response = await JokeAPI.getJokes({ jokeType: 'single' });
+  const data = await response.json();
+  randomJokesContainer.classList.add(".random-jokes-container");
+  randomJokesText.textContent = data.joke;
+};
+
+
+randomJokesButton.addEventListener('click', getJokes);
